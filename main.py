@@ -26,6 +26,9 @@ async def send_notification(guild, member, voice_channel, event_type):
 @client.event
 async def on_voice_state_update(member, before, after):
     """ボイスチャンネルの状態が更新された際に呼び出されるイベント"""
+    if member.bot:
+        return
+
     guild = member.guild
 
     # 参加時の処理
